@@ -1,6 +1,7 @@
 # debug_unwrap
 
-Adds the method debug_unwrap for when you just want to make it work.
+Adds the method debug_unwrap for when you just want to make it compile.
+Not to be confused with the <https://crates.io/crates/debug_unwraps> crate.
 
 This library adds the [DebugUnwrap](DebugUnwrap) extension trait that adds
 the method [debug_unwrap](DebugUnwrap::debug_unwrap) to the
