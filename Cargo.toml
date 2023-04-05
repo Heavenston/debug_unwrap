@@ -1,6 +1,6 @@
 [package]
 name = "debug_unwrap"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Adds the method debug_unwrap for when you just want to make it compile."
 license = "MIT"
