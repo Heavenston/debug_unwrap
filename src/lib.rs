@@ -33,7 +33,6 @@ pub trait DebugUnwrap: Sized {
     /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="out")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "out")))]
     fn out(self) -> Self::Output {
         self.debug_unwrap()
     }
@@ -44,7 +43,6 @@ pub trait DebugUnwrap: Sized {
     /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="o")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "o")))]
     fn o(self) -> Self::Output {
         self.debug_unwrap()
     }
@@ -55,7 +53,6 @@ pub trait DebugUnwrap: Sized {
     /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="peel")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "peel")))]
     fn peel(self) -> Self::Output {
         self.debug_unwrap()
     }
