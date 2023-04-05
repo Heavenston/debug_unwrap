@@ -14,4 +14,3 @@ library features of the same name to enable them:
  - out (enabled by default)
  - o
  - peel
-
