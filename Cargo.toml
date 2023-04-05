@@ -1,6 +1,6 @@
 [package]
 name = "debug_unwrap"
-version = "0.0.1"
+version = "1.0.0"
 edition = "2021"
 description = "Adds a debug-only version of Option::unwrap"
 license = "GPL-3.0-or-later"
@@ -9,3 +9,9 @@ homepage = "https://lib.rs/debug_unwrap"
 repository = "https://github.com/Heavenston/debug_unwrap"
 
 [dependencies]
+
+[features]
+default = ["out"]
+out = []
+o = []
+peel = []
