@@ -1,23 +1,60 @@
+//! Adds the method debug_unwrap for when you just want to make it work.
+//!
+//! This library adds the [DebugUnwrap](DebugUnwrap) extension trait that adds
+//! the method [debug_unwrap](DebugUnwrap::debug_unwrap) to the
+//! [Option](std::option::Option) and [Result](std::result::Result) types.
+//! It does exactly the same thing as the normal unwrap methods, but won't exist
+//! when compiling without debug_assertions enabled
+//! (i.e. when not compiling in Debug mode).
+//!
+//! There is also three other aliases that all have there respective
+//! library features of the same name to enable them:
+//!  - out (enabled by default)
+//!  - o
+//!  - peel
 use std::fmt::Debug;
 
+/// Extension trait for the Result and Option types, see crate-level
+/// documentation for more information.
 pub trait DebugUnwrap: Sized {
     type Output;
 
+    /// The same as [Option::unwrap](Option::unwrap) on Options or
+    /// [Result::unwrap](Result::unwrap) on Results but only exists in Debug mode.
+    ///
+    /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     fn debug_unwrap(self) -> Self::Output;
 
+    /// Alias for [debug_unwrap](DebugUnwrap::debug_unwrap).
+    /// Enabled by the feature `out` (enabled by default).
+    ///
+    /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="out")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "out")))]
     fn out(self) -> Self::Output {
         self.debug_unwrap()
     }
+
+    /// Alias for [debug_unwrap](DebugUnwrap::debug_unwrap).
+    /// Enabled by the feature `o`.
+    ///
+    /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="o")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "o")))]
     fn o(self) -> Self::Output {
         self.debug_unwrap()
     }
+
+    /// Alias for [debug_unwrap](DebugUnwrap::debug_unwrap).
+    /// Enabled by the feature `peel`.
+    ///
+    /// See crate-level documentation for more information.
     #[cfg(debug_assertions)]
     #[cfg(feature="peel")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "peel")))]
     fn peel(self) -> Self::Output {
         self.debug_unwrap()
     }
