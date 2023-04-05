@@ -6,5 +6,6 @@ description = "Adds a debug-only version of Option::unwrap"
 license = "GPL-3.0-or-later"
 documentation = "https://docs.rs/debug_unwrap"
 homepage = "https://lib.rs/debug_unwrap"
+repository = "https://github.com/Heavenston/debug_unwrap"
 
 [dependencies]
