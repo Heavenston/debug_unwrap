@@ -24,16 +24,24 @@ pub trait DebugUnwrap: Sized {
     /// [Result::unwrap](Result::unwrap) on Results but only exists in Debug mode.
     ///
     /// See crate-level documentation for more information.
-    #[cfg(debug_assertions)]
+    #[cfg(any(debug_assertions, feature="deprecate"))]
+    #[cfg_attr(
+        all(not(debug_assertions), feature = "deprecate"),
+        deprecated = "Debug unwrap must not be used in release mode"
+    )]
     fn debug_unwrap(self) -> Self::Output;
 
     /// Alias for [debug_unwrap](DebugUnwrap::debug_unwrap).
     /// Enabled by the feature `out` (enabled by default).
     ///
     /// See crate-level documentation for more information.
-    #[cfg(debug_assertions)]
-    #[cfg(feature="out")]
+    #[cfg(all(any(debug_assertions, feature="deprecate"), feature="out"))]
+    #[cfg_attr(
+        all(not(debug_assertions), feature = "deprecate"),
+        deprecated = "Debug unwrap must not be used in release mode"
+    )]
     fn out(self) -> Self::Output {
+        #[allow(deprecated)]
         self.debug_unwrap()
     }
 
@@ -41,9 +49,13 @@ pub trait DebugUnwrap: Sized {
     /// Enabled by the feature `o`.
     ///
     /// See crate-level documentation for more information.
-    #[cfg(debug_assertions)]
-    #[cfg(feature="o")]
+    #[cfg(all(any(debug_assertions, feature="deprecate"), feature="o"))]
+    #[cfg_attr(
+        all(not(debug_assertions), feature = "deprecate"),
+        deprecated = "Debug unwrap must not be used in release mode"
+    )]
     fn o(self) -> Self::Output {
+        #[allow(deprecated)]
         self.debug_unwrap()
     }
 
@@ -51,9 +63,13 @@ pub trait DebugUnwrap: Sized {
     /// Enabled by the feature `peel`.
     ///
     /// See crate-level documentation for more information.
-    #[cfg(debug_assertions)]
-    #[cfg(feature="peel")]
+    #[cfg(all(any(debug_assertions, feature="deprecate"), feature="peel"))]
+    #[cfg_attr(
+        all(not(debug_assertions), feature = "deprecate"),
+        deprecated = "Debug unwrap must not be used in release mode"
+    )]
     fn peel(self) -> Self::Output {
+        #[allow(deprecated)]
         self.debug_unwrap()
     }
 }
@@ -61,7 +77,7 @@ pub trait DebugUnwrap: Sized {
 impl<T: Sized> DebugUnwrap for Option<T> {
     type Output = T;
 
-    #[cfg(debug_assertions)]
+    #[cfg(any(debug_assertions, feature="deprecate"))]
     fn debug_unwrap(self) -> T {
         self.unwrap()
     }
@@ -70,7 +86,7 @@ impl<T: Sized> DebugUnwrap for Option<T> {
 impl<T: Sized, E: Debug> DebugUnwrap for Result<T, E> {
     type Output = T;
 
-    #[cfg(debug_assertions)]
+    #[cfg(any(debug_assertions, feature="deprecate"))]
     fn debug_unwrap(self) -> T {
         self.unwrap()
     }
