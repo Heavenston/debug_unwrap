@@ -13,6 +13,10 @@
 //!  - out (enabled by default)
 //!  - o
 //!  - peel
+//!
+//! You can also use the `deprecate` feature which makes the functions deprecated
+//! on release mode instead of flat out not existing, so that your code will
+//! compile but with warnings.
 use std::fmt::Debug;
 
 /// Extension trait for the Result and Option types, see crate-level
